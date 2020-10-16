@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection = "employee")
+@Document(collection = "employees")
 public class Employee {
 
     @Id
@@ -90,5 +90,19 @@ public class Employee {
 
     public void setEmergencyContactName(String emergencyContactName) {
         this.emergencyContactName = emergencyContactName;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", emergencyContactNumber='" + emergencyContactNumber + '\'' +
+                ", emergencyContactName='" + emergencyContactName + '\'' +
+                '}';
     }
 }
