@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+config-server/src/main/resources/application.properties
+.idea/
