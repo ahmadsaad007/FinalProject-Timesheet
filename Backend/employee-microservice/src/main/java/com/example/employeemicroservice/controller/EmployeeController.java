@@ -10,13 +10,12 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping("/getAllEmployee")
+    @RequestMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployee(){
         return employeeService.getAllEmployee();
     }
