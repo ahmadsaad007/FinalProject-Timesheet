@@ -25,7 +25,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8800/getEmployeeInfo?email=`+this.email)
+    axios.get(`http://localhost:8802/getEmployeeInfo?email=`+this.email)
       .then(res => {
         const {id,firstName, lastName, address, email, phoneNumber, emergencyContactNumber, emergencyContactName} = res.data;
         console.log(firstName)

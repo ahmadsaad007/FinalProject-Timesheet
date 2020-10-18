@@ -1,6 +1,7 @@
 package com.example.compositemicroservice.controller;
 
 import com.example.compositemicroservice.domain.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class CompositeClientController {
 
+
     private EmployeeClient employeeClient;
+
+    private TimesheetClient timesheetClient;
 
     public CompositeClientController(EmployeeClient employeeClient) {
         super();
@@ -36,7 +40,6 @@ public class CompositeClientController {
                                                       @RequestParam(value = "address") String address){
         Boolean b = this.employeeClient.updateEmployeeInfo(phoneNumber, email, address);
         return ResponseEntity.status(HttpStatus.CREATED).body(b);
-    }
 
-    //now we need to add the mappings for TimeSheet
+    }
 }
