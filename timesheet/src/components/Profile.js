@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 // import { useForm } from "react-hook-form";
+import axios from 'axios'
 
 class Profile extends Component {
+  email= "aasd12@markallen.com";
+
   constructor(props) {
+   
     super(props);
     this.state = {
-      isGoing: true,
-      numberOfGuests: 2,
-      name: "Aiden",
-      phoneNum: 6178161277,
-      email: "kk@mall.com",
-      address: "58 Shelley Cir",
-      emerCon1Name: "Aria",
-      emerCon1Cell: "7758258",
-      emerCon2Name: "Matt",
-      emerCon2Cell: "438438"
+      id: "",
+      firstName: "",
+      lastNmae:"",
+      phoneNumber: "",
+      email: "",
+      address: "",
+      emergencyContactNumber: "",
+      emergencyContactName: "",
+      emergencyContactNumber2: "",
+      emergencyContactName2: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  componentDidMount() {
+    axios.get(`http://localhost:8800/getEmployeeInfo?email=`+this.email)
+      .then(res => {
+        const {id,firstName, lastName, address, email, phoneNumber, emergencyContactNumber, emergencyContactName} = res.data;
+        console.log(firstName)
+        this.setState({id,firstName, lastName, address, email, phoneNumber, emergencyContactNumber, emergencyContactName});
+      })
+  }
+
 
   handleInputChange(event) {
     const target = event.target;
@@ -39,7 +53,7 @@ class Profile extends Component {
           <input
             name="phoneNum"
             type="text"
-            value={this.state.phoneNum}
+            value={this.state.phoneNumber}
             onChange={this.handleInputChange} />
         </label>
         <br />
@@ -64,7 +78,7 @@ class Profile extends Component {
           <input
             name="emerCon1Name"
             type="text"
-            value={this.state.emerCon1Name}
+            value={this.state.emergencyContactName}
             onChange={this.handleInputChange} />
         </label>
         <br />
@@ -72,7 +86,7 @@ class Profile extends Component {
           <input
             name="emerCon1Cell"
             type="text"
-            value={this.state.emerCon1Cell}
+            value={this.state.emergencyContactNumber}
             onChange={this.handleInputChange} />
         </label>
         <br />
@@ -81,7 +95,7 @@ class Profile extends Component {
           <input
             name="emerCon2Name"
             type="text"
-            value={this.state.emerCon2Name}
+            value={this.state.emergencyContactName2}
             onChange={this.handleInputChange} />
         </label>
         <br />
@@ -89,7 +103,7 @@ class Profile extends Component {
           <input
             name="emerCon1Cell"
             type="text"
-            value={this.state.emerCon2Cell}
+            value={this.state.emergencyContactNumber2}
             onChange={this.handleInputChange} />
         </label>
         <br />
