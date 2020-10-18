@@ -2,6 +2,7 @@ package com.example.timesheetmicroservice.domain;
 
 public class TimeSheetDetail {
     private String day;
+    private String date;
     private String startTime;
     private String endTime;
     private double hours;
@@ -9,8 +10,9 @@ public class TimeSheetDetail {
     private boolean floating;
     private boolean vacation;
 
-    public TimeSheetDetail(String day, String startTime, String endTime, double hours, boolean holiday, boolean floating, boolean vacation) {
+    public TimeSheetDetail(String day, String date, String startTime, String endTime, double hours, boolean holiday, boolean floating, boolean vacation) {
         this.day = day;
+        this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.hours = hours;
@@ -73,5 +75,13 @@ public class TimeSheetDetail {
 
     public void setVacation(boolean vacation) {
         this.vacation = vacation;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

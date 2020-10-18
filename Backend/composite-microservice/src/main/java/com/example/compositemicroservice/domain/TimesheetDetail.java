@@ -1,13 +1,25 @@
 package com.example.compositemicroservice.domain;
 
-public class TimesheetDetails {
+public class TimesheetDetail {
     private String day;
+    private String date;
     private String startTime;
     private String endTime;
     private double hours;
     private boolean holiday;
     private boolean floating;
     private boolean vacation;
+
+    public TimesheetDetail(String day, String date, String startTime, String endTime, double hours, boolean holiday, boolean floating, boolean vacation) {
+        this.day = day;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.hours = hours;
+        this.holiday = holiday;
+        this.floating = floating;
+        this.vacation = vacation;
+    }
 
     public String getDay() {
         return day;
@@ -63,5 +75,13 @@ public class TimesheetDetails {
 
     public void setVacation(boolean vacation) {
         this.vacation = vacation;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

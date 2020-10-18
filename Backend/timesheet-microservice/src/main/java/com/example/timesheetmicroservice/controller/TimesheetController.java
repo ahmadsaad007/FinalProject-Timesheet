@@ -32,7 +32,7 @@ public class TimesheetController {
         return timesheetService.getSingleTimesheet(endDate,eid);
     }
 
-    @GetMapping("/updateTimesheet")
+    @PostMapping("/updateTimesheet")
     public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "endDate") String endDate,
                                                    @RequestParam(value = "eid") String eid,
                                                    @RequestParam(value = "file") String file,
