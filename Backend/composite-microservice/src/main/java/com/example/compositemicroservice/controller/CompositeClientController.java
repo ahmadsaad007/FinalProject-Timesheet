@@ -64,7 +64,7 @@ public class CompositeClientController {
         return ResponseEntity.status(HttpStatus.CREATED).body(timesheet);
     }
 
-    @GetMapping("/updateTimesheet")
+    @PostMapping("/updateTimesheet")
     public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "endDate") String endDate,
                                                    @RequestParam(value = "email") String email,
                                                    @RequestParam(value = "file") String file,
