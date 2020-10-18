@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Profile from './Profile';
 import TimeSheet from './TimeSheet';
@@ -14,16 +13,16 @@ export default class Navigation extends Component {
         return (
             <Router>
             <div className="container">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
+                <ul className="nav nav-tabs" id="myTab" role="tablist">
+                <li className="nav-item" role="presentation">
                     <Link to={'/'} className="nav-link"> Summary </Link>
                     {/* <a class="nav-link active" id="Summary-tab" data-toggle="tab" href="#Summary" role="tab" aria-controls="Summary" aria-selected="true">Summary</a> */}
                 </li>
-                {show && <li class="nav-item" role="presentation">
+                {show && <li className="nav-item" role="presentation">
                     <Link to={'/timesheet'} className="nav-link">TimeSheet</Link>
                     {/* <a class="nav-link" id="TimeSheet-tab" data-toggle="tab" href="#TimeSheet" role="tab" aria-controls="TimeSheet" aria-selected="false">TimeSheet</a> */}
                 </li>}
-                <li class="nav-item" role="presentation">
+                <li className="nav-item" role="presentation">
                     <Link to={'/profile'} className="nav-link">Profile</Link>
                     {/* <a class="nav-link" id="Profile-tab" data-toggle="tab" href="#Profile" role="tab" aria-controls="Profile" aria-selected="false">Profile</a> */}
                 </li>
