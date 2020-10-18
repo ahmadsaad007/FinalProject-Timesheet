@@ -2,7 +2,8 @@ package com.example.compositemicroservice.domain;
 
 public class Employee {
     private String id;
-
+    private String eid;
+    private String defaultTimesheetId;
     private String firstName;
     private String lastName;
     private String address;
@@ -11,6 +12,8 @@ public class Employee {
 
     private String emergencyContactNumber;
     private String emergencyContactName;
+
+    private int floating;
 
     public String getId() {
         return id;
@@ -74,5 +77,29 @@ public class Employee {
 
     public void setEmergencyContactName(String emergencyContactName) {
         this.emergencyContactName = emergencyContactName;
+    }
+
+    public String getEid() {
+        return eid;
+    }
+
+    public void setEid(String eid) {
+        this.eid = eid;
+    }
+
+    public String getDefaultTimesheetId() {
+        return defaultTimesheetId;
+    }
+
+    public void setDefaultTimesheetId(String defaultTimesheetId) {
+        this.defaultTimesheetId = defaultTimesheetId;
+    }
+
+    public int getFloating() {
+        return floating;
+    }
+
+    public void setFloating(int floating) {
+        this.floating = floating;
     }
 }

@@ -10,6 +10,8 @@ public class Employee {
 
     @Id
     private String id;
+    private String eid;
+    private String defaultTimesheetId;
 
     private String firstName;
     private String lastName;
@@ -19,6 +21,8 @@ public class Employee {
 
     private String emergencyContactNumber;
     private String emergencyContactName;
+
+    private int floating;
 
     public Employee(String id, String firstName, String lastName, String address, String email, String phoneNumber,
                     String emergencyContactNumber, String emergencyContactName) {
@@ -90,6 +94,30 @@ public class Employee {
 
     public void setEmergencyContactName(String emergencyContactName) {
         this.emergencyContactName = emergencyContactName;
+    }
+
+    public String getEid() {
+        return eid;
+    }
+
+    public void setEid(String eid) {
+        this.eid = eid;
+    }
+
+    public String getDefaultTimesheetId() {
+        return defaultTimesheetId;
+    }
+
+    public void setDefaultTimesheetId(String defaultTimesheetId) {
+        this.defaultTimesheetId = defaultTimesheetId;
+    }
+
+    public int getFloating() {
+        return floating;
+    }
+
+    public void setFloating(int floating) {
+        this.floating = floating;
     }
 
     @Override

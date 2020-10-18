@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Timesheet {
+
     private String id;
     private String eid;
     private String endDate;
-    private Map<String, TimesheetDetails> timesheet;
+    private Map<String, TimesheetDetail> timesheet;
     private double billingHours;
     private double totalHours;
     private double overtimeHours;
@@ -17,35 +18,39 @@ public class Timesheet {
     private List<String> files;
     private boolean defaultTimesheet;
 
+//    public Timesheet(String id, String eid, String endDate, Map<String, TimeSheetDetail> timeSheetDetails, double billingHours, double totalHours, double overtimeHours, String submissionStatus, String approveStatus, String comment, List<String> files, boolean defaultTimesheet) {
+//        this.id = id;
+//        this.eid = eid;
+//        this.endDate = endDate;
+//        this.timeSheetDetails = timeSheetDetails;
+//        this.billingHours = billingHours;
+//        this.totalHours = totalHours;
+//        this.overtimeHours = overtimeHours;
+//        this.submissionStatus = submissionStatus;
+//        this.approveStatus = approveStatus;
+//        this.comment = comment;
+//        this.files = files;
+//        this.defaultTimesheet = defaultTimesheet;
+//    }
+
+
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getEid() {
         return eid;
     }
 
-    public void setEid(String eid) {
-        this.eid = eid;
-    }
-
     public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public Map<String, TimesheetDetails> getTimesheet() {
+    public Map<String, TimesheetDetail> getTimesheet() {
         return timesheet;
     }
 
-    public void setTimesheet(Map<String, TimesheetDetails> timesheet) {
+    public void setTimesheet(Map<String, TimesheetDetail> timesheet) {
         this.timesheet = timesheet;
     }
 
