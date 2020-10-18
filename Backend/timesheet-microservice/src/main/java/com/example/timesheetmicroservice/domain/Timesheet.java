@@ -1,14 +1,22 @@
-package com.example.compositemicroservice.domain;
+package com.example.timesheetmicroservice.domain;
+
+
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Map;
 
+@Data
+@Document(collection = "timesheet")
 public class Timesheet {
 
+    @Id
     private String id;
     private String eid;
     private String endDate;
-    private Map<String, TimesheetDetail> timesheet;
+    private Map<String, TimeSheetDetail> timesheet;
     private double billingHours;
     private double totalHours;
     private double overtimeHours;
@@ -46,11 +54,11 @@ public class Timesheet {
         return endDate;
     }
 
-    public Map<String, TimesheetDetail> getTimesheet() {
+    public Map<String, TimeSheetDetail> getTimesheet() {
         return timesheet;
     }
 
-    public void setTimesheet(Map<String, TimesheetDetail> timesheet) {
+    public void setTimesheet(Map<String, TimeSheetDetail> timesheet) {
         this.timesheet = timesheet;
     }
 
