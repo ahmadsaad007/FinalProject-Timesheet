@@ -18,22 +18,6 @@ public class Timesheet {
     private List<String> files;
     private boolean defaultTimesheet;
 
-//    public Timesheet(String id, String eid, String endDate, Map<String, TimeSheetDetail> timeSheetDetails, double billingHours, double totalHours, double overtimeHours, String submissionStatus, String approveStatus, String comment, List<String> files, boolean defaultTimesheet) {
-//        this.id = id;
-//        this.eid = eid;
-//        this.endDate = endDate;
-//        this.timeSheetDetails = timeSheetDetails;
-//        this.billingHours = billingHours;
-//        this.totalHours = totalHours;
-//        this.overtimeHours = overtimeHours;
-//        this.submissionStatus = submissionStatus;
-//        this.approveStatus = approveStatus;
-//        this.comment = comment;
-//        this.files = files;
-//        this.defaultTimesheet = defaultTimesheet;
-//    }
-
-
     public String getId() {
         return id;
     }
