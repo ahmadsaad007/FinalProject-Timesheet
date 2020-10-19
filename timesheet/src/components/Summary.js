@@ -9,6 +9,9 @@ import React, { Component } from 'react';
 // import TableRow from '@material-ui/core/TableRow';
 // import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
+import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 // import { useTable } from "react-table";
 // import ReactTable from "react-table-6";  
 // import "react-table-6/react-table.css" 
@@ -18,68 +21,55 @@ import axios from 'axios';
 class Summary extends Component {
   email= "ad1231@markallen.com";
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      // rows : [],
-      isLoading : true,
-      rows:[{
-        id: String,
-        eid: String,
-        endDate: "",
-        timesheet: { day1:{day:String, date:String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean},
-                     day2:{day:String, date:String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean},
-                     day3:{day:String, date: String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean}, 
-                     day4:{day:String, date: String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean}, 
-                     day5:{day:String, date: String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean}, 
-                     day6:{day:String, date: String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean}, 
-                     day7:{day:String, date: String, startTime:String, endTime: String, hours:Number, floating: Boolean, holiday:Boolean, vaction:Boolean}},
-        billingHours: Number,
-        totalHours: Number,
-        overtimeHours: Number,
-        submissionStatus: "",
-        approveStatus: String,
-        comment: String,
-        files: String,
-        defaultTimesheet: Boolean
-      }]
-    }
-  }
-
+  state = {
+    timeList:[]
+  };
+ 
 componentDidMount() {
   axios.get(`http://localhost:8080/getAllTimesheets?email=`+this.email)
     .then(res => {
-      const row1 = res.data;
-      console.log(res.data);
-      this.setState({row1});
-      this.setState({ isLoading: false });
-      console.log(row1);
-      console.log(this.state.rows.length);
+      console.log(res.data)
+      this.setState({timeList: res.data})
     })
 }
 
 
   render() {
-    // const {tableData} = this.state;
-    if (this.state.isLoading) {
-      return <div>Loading...</div>;
-    }
+    const tableRows = () => {
+      return this.state.timeList.map((person) => {
+        return (
+          <tr key={person.endDate}>
+            <td>{person.endDate}</td>
+            <td>{person.totalHours}</td>
+            <td>{person.submissionStatus}</td>
+            <td>{person.approveStatus}</td>
+            <td>
+              {' '}
+              <Link to={`/timesheet/${person.endDate}`}>
+                {person.approvedStatus === 'Approved' ? 'Edit' : 'View'}
+              </Link>
+            </td>
+            <td>{person.comment}</td>
+          </tr>
+        );
+      });
+    };
+
     return (
-      <div>
-        <h2>TimeSheeet Summary</h2>
-            <div>
-              <span>Week Endinng</span>
-              <span>Total Hours</span>
-              <span>Submission Status</span>
-            </div>
-            {this.state.rows.map((row)=>(
-            <div key = {row.id}>
-              <span> {row.endDate}</span>
-              <span> {row.totalHours}</span>
-              <span> {row.submissionStatus}</span>
-            </div>))}
-      </div>
-  );
+      <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>WeekEnding</th>
+                  <th>TotalHours</th>
+                  <th>SubmissionStatus</th>
+                  <th>ApprovalStatus</th>
+                  <th>Option</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>{tableRows()}</tbody>
+            </Table>
+    )
   }
 }
 
