@@ -29,7 +29,7 @@ export default class Navigation extends Component {
                 </ul>
                 <Switch>
                     <Route exact path='/' component={Summary} />
-                    <Route path='/timesheet' component={TimeSheet} />
+                    <Route path='/timesheet/:time' component={TimeSheet} />
                     <Route path='/profile' component={Profile} />
                 </Switch>
                 {/* <div class="tab-content" id="myTabContent">

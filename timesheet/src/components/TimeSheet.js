@@ -37,8 +37,13 @@ class TimeSheeet extends Component {
   
 
 componentDidMount() {
-  console.log("Comp Mounted")
-  axios.get(`http://localhost:8802/getSingleTimesheet?endDate=`+this.endDate+`&email=`+this.email)
+  var time = this.props.match.params.time+"";
+  if (time.length == 0){
+    time = this.endDate;
+  }
+  
+  console.log(time.length);
+  axios.get(`http://localhost:8080/getSingleTimesheet?endDate=`+time+`&email=`+this.email)
      .then(res => {
        this.setState({timesheets: res.data});
        this.setState({ isLoading: false });
