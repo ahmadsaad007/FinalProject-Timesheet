@@ -1,10 +1,7 @@
 package com.example.compositemicroservice.controller;
 
 import com.example.compositemicroservice.domain.Employee;
-<<<<<<< HEAD
-=======
 import com.example.compositemicroservice.domain.Timesheet;
->>>>>>> dea96be11bf3b5dcb7f577ed443b174052034365
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,28 +14,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class CompositeClientController {
 
-<<<<<<< HEAD
-
-    private EmployeeClient employeeClient;
-
-    private TimesheetClient timesheetClient;
-
-    public CompositeClientController(EmployeeClient employeeClient) {
-=======
     @Autowired
     private EmployeeClient employeeClient;
 
     @Autowired
     private TimesheetClient timesheetClient;
-
-
-
-    public CompositeClientController(EmployeeClient employeeClient, TimesheetClient timesheetClient) {
->>>>>>> dea96be11bf3b5dcb7f577ed443b174052034365
-        super();
-        this.employeeClient = employeeClient;
-        this.timesheetClient  = timesheetClient;
-    }
 
     @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
@@ -55,13 +35,10 @@ public class CompositeClientController {
     @PostMapping("/updateInfo")
     public ResponseEntity<Boolean> updateEmployeeInfo(@RequestParam(value = "phone") String phoneNumber,
                                                       @RequestParam(value = "email") String email,
-                                                      @RequestParam(value = "address") String address){
+                                                      @RequestParam(value = "address") String address) {
         Boolean b = this.employeeClient.updateEmployeeInfo(phoneNumber, email, address);
         return ResponseEntity.status(HttpStatus.CREATED).body(b);
-
-<<<<<<< HEAD
     }
-=======
 //    now we need to add the mappings for TimeSheet
     @GetMapping("/getAllTimesheets")
     public ResponseEntity<List<Timesheet>> getAllTimesheets(@RequestParam(value = "email") String email){
@@ -88,9 +65,4 @@ public class CompositeClientController {
         Boolean success = this.timesheetClient.updateTimesheet(endDate, employee.getEid(), file, defaultTimesheet, timesheetDetailMap);
         return ResponseEntity.status(HttpStatus.CREATED).body(success);
     }
-
-
-
-
->>>>>>> dea96be11bf3b5dcb7f577ed443b174052034365
 }
