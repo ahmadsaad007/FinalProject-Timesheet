@@ -20,14 +20,6 @@ public class CompositeClientController {
     @Autowired
     private TimesheetClient timesheetClient;
 
-
-
-    public CompositeClientController(EmployeeClient employeeClient, TimesheetClient timesheetClient) {
-        super();
-        this.employeeClient = employeeClient;
-        this.timesheetClient  = timesheetClient;
-    }
-
     @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         List<Employee> list = this.employeeClient.getAllEmployees();
@@ -43,11 +35,10 @@ public class CompositeClientController {
     @PostMapping("/updateInfo")
     public ResponseEntity<Boolean> updateEmployeeInfo(@RequestParam(value = "phone") String phoneNumber,
                                                       @RequestParam(value = "email") String email,
-                                                      @RequestParam(value = "address") String address){
+                                                      @RequestParam(value = "address") String address) {
         Boolean b = this.employeeClient.updateEmployeeInfo(phoneNumber, email, address);
         return ResponseEntity.status(HttpStatus.CREATED).body(b);
     }
-
 //    now we need to add the mappings for TimeSheet
     @GetMapping("/getAllTimesheets")
     public ResponseEntity<List<Timesheet>> getAllTimesheets(@RequestParam(value = "email") String email){
@@ -74,8 +65,4 @@ public class CompositeClientController {
         Boolean success = this.timesheetClient.updateTimesheet(endDate, employee.getEid(), file, defaultTimesheet, timesheetDetailMap);
         return ResponseEntity.status(HttpStatus.CREATED).body(success);
     }
-
-
-
-
 }
