@@ -20,14 +20,6 @@ public class CompositeClientController {
     @Autowired
     private TimesheetClient timesheetClient;
 
-
-
-//    public CompositeClientController(EmployeeClient employeeClient, TimesheetClient timesheetClient) {
-//        super();
-//        this.employeeClient = employeeClient;
-//        this.timesheetClient  = timesheetClient;
-//    }
-
     @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         List<Employee> list = this.employeeClient.getAllEmployees();
