@@ -22,11 +22,11 @@ public class CompositeClientController {
 
 
 
-    public CompositeClientController(EmployeeClient employeeClient, TimesheetClient timesheetClient) {
-        super();
-        this.employeeClient = employeeClient;
-        this.timesheetClient  = timesheetClient;
-    }
+//    public CompositeClientController(EmployeeClient employeeClient, TimesheetClient timesheetClient) {
+//        super();
+//        this.employeeClient = employeeClient;
+//        this.timesheetClient  = timesheetClient;
+//    }
 
     @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
