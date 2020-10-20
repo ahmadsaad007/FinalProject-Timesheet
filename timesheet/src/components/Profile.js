@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { useForm } from "react-hook-form";
-import axios from 'axios'
+import axios from 'axios';
 
 class Profile extends Component {
   email= "aasd12@markallen.com";
@@ -25,7 +25,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8802/getEmployeeInfo?email=`+this.email)
+    axios.get(`http://localhost:8080/getEmployeeInfo?email=`+this.email)
       .then(res => {
         const {id,firstName, lastName, address, email, phoneNumber, emergencyContactNumber, emergencyContactName} = res.data;
         console.log(firstName)

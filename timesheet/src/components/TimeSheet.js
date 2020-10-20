@@ -91,13 +91,13 @@ class TimeSheeet extends Component {
   }
 
   componentDidMount() {
-    console.log("Comp Mounted");
-    axios.get(`http://localhost:8802/getSingleTimesheet?endDate=` +
-      this.endDate +
-      `&email=` +
-      this.email
-    )
-      .then((res) => {
+    var time = this.props.match.params.time+"";
+    if (time.length == 0){
+       time = this.endDate;
+    }
+  
+  console.log(time.length);
+  axios.get(`http://localhost:8080/getSingleTimesheet?endDate=`+time+`&email=`+this.email).then((res) => {
         var {
           timesheetsId,
           eid,
@@ -255,9 +255,8 @@ class TimeSheeet extends Component {
 
         this.setState({ isLoading: false });
 
-        console.log(this.state.day1);
+        //console.log(this.state);
       });
-  }
 
 
   handleChange(event) {
