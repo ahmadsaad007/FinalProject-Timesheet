@@ -20,9 +20,6 @@ public interface TimesheetClient {
                                  @RequestParam(value = "eid") String eid);
 
     @PostMapping("/updateTimesheet")
-    Boolean updateTimesheet(@RequestParam(value = "endDate") String endDate,
-                            @RequestParam(value = "eid") String eid,
-                            @RequestParam(value = "file") String file,
-                            @RequestParam(value = "defaultTimesheet") boolean defaultTimesheet,
-                            @RequestParam(value = "obj") Object timesheetDetailMap);
+    Boolean updateTimesheet(
+            @RequestParam(value = "obj") List<Object> timesheetDetailMap);
 }

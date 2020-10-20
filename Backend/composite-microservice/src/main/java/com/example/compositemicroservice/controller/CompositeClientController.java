@@ -56,13 +56,10 @@ public class CompositeClientController {
     }
 
     @PostMapping("/updateTimesheet")
-    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "endDate") String endDate,
-                                                   @RequestParam(value = "email") String email,
-                                                   @RequestParam(value = "file") String file,
-                                                   @RequestParam(value = "defaultTimesheet") boolean defaultTimesheet,
-                                                   @RequestParam(value = "obj") Object timesheetDetailMap) throws IOException {
-        Employee employee = this.employeeClient.getEmployeeInfo(email);
-        Boolean success = this.timesheetClient.updateTimesheet(endDate, employee.getEid(), file, defaultTimesheet, timesheetDetailMap);
-        return ResponseEntity.status(HttpStatus.CREATED).body(success);
+    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List<Object> timesheetDetailMap,
+                                                   @RequestParam(value = "email") String email) throws IOException {
+
+        System.out.println(email);
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.timesheetClient.updateTimesheet(timesheetDetailMap));
     }
 }
