@@ -15,7 +15,7 @@ public interface TimesheetRepository extends MongoRepository<Timesheet,String> {
 
     Timesheet findByEndDateAndEid(String endDate, String eid);
 
-    Timesheet findByIdAndEid(String id,String  eid);
+    Timesheet findByEidAndEndDate(String eid,String  date);
     // find timesheet for a limited result by eid
     // https://www.baeldung.com/spring-data-jpa-pagination-sorting
 //    List<Timesheet> findAllByEid(String eid, Pageable pageable);

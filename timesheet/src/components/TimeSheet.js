@@ -12,6 +12,7 @@ class TimeSheeet extends Component {
       timesheetsId: String,
       eid: String,
       endDate: String,
+      files: String,
 
       day1: String,
       date1: String,
@@ -82,7 +83,6 @@ class TimeSheeet extends Component {
       submissionStatus: String,
       approveStatus: String,
       comment: String,
-      files: String,
       defaultTimesheet: Boolean,
     };
 
@@ -271,39 +271,39 @@ class TimeSheeet extends Component {
     console.log(this.state.startTime1)
     const obj = [
 
-      this.state.timesheetsId,
+      this.state.timesheetsId,//0
       this.state.eid,
-      this.state.endDate,
-      this.state.billingHours,
-      this.state.totalHours,
-      this.state.overtimeHours,
-      this.state.submissionStatus,
+      this.state.endDate,//2
+      this.state.billingHours,//3
+      this.state.totalHours,//4
+      this.state.overtimeHours,//5
+      this.state.submissionStatus,//6
       this.state.approveStatus,
-      this.state.comment,
+      this.state.comment,//8
       this.state.files,
       this.state.defaultTimesheet,
 
-      this.state.day1,
-      this.state.date1,
-      this.state.startTime1,
+      this.state.day1,//11
+      this.state.date1,//12
+      this.state.startTime1,//13
       this.state.endTime1,
-      this.state.hours1,
+      this.state.hours1,//15
       this.state.floating1,
       this.state.holiday1,
-      this.state.vacation1,
+      this.state.vacation1,//18
 
-      this.state.day2,
+      this.state.day2,//19
       this.state.date2,
-      this.state.startTime2,
+      this.state.startTime2,//21
       this.state.endTime2,
-      this.state.hours2,
+      this.state.hours2,//23
       this.state.floating2,
       this.state.holiday2,
-      this.state.vacation2,
+      this.state.vacation2,//26
 
-      this.state.day3,
-      this.state.date3,
-      this.state.startTime3,
+      this.state.day3,//27
+      this.state.date3,//28
+      this.state.startTime3,//29
       this.state.endTime3,
       this.state.hours3,
       this.state.floating3,
@@ -350,7 +350,8 @@ class TimeSheeet extends Component {
     axios.post('http://localhost:8802/updateTimesheet?obj=' + obj + '&email=' + this.email).then(res => {
       console.log(res);
       console.log(res.data);
-    })
+      alert("Timesheet Successfully Updated")
+    }).catch(error => { alert("An error occurred! Try again!") })
     event.preventDefault();
   }
 
@@ -362,32 +363,41 @@ class TimeSheeet extends Component {
     return (
       <div>
         <h2>TimeSheeet</h2>
-        <div>
-          <label>Week Ending: </label>
-          <input
-            defaultValue={this.state.endDate}
-            onChange={(e) => this.handleChange(e)}
-            disabled={true}
-          ></input>
-        </div>
-        <div>
-          <label>Total Billing Hours:</label>
-          <input
-            value={this.state.billingHours}
-            disabled={true}
-          ></input>
-        </div>
-        <div>
-          <label>Total Compensated Hours:</label>
-          <input
-            value={this.state.totalHours}
-            disabled={true}
-          ></input>
+
+        <div style={{ paddingLeft: '15%', paddingRight: '15%' }}>
+          <span style={{ float: 'left' }}>
+            <label style={{ paddingRight: '40px' }}>Week Ending: </label>
+            <input
+              defaultValue={this.state.endDate}
+              onChange={(e) => this.handleChange(e)}
+              disabled={true}
+            ></input>
+          </span>
+          <span style={{ float: 'right' }}>
+            <button>Set Default</button>
+          </span>
         </div>
 
-        <table>
+        <div style={{ marginTop: '50px', paddingLeft: '15%', paddingRight: '15%' }}>
+          <span style={{ float: 'left' }}>
+            <label style={{ paddingRight: '5px' }}>Total Billing Hours:</label>
+            <input
+              value={this.state.billingHours}
+              disabled={true}
+            ></input>
+          </span>
+          <span style={{ float: 'right' }}>
+            <label>Total Compensated Hours:</label>
+            <input
+              value={this.state.totalHours}
+              disabled={true}
+            ></input>
+          </span>
+        </div>
+
+        <table style={{ marginTop: '15%' }}>
           <thead>
-            <tr>
+            <tr style={{ fontSize: '16px', fontWeight: 'bold' }}>
               <td>Day</td>
               <td>Date</td>
               <td>Starting Time</td>
@@ -398,6 +408,7 @@ class TimeSheeet extends Component {
               <td>Vacation</td>
             </tr>
           </thead>
+
           <tbody>
             <DayComponent
               date={this.state.date1}
@@ -489,14 +500,17 @@ class TimeSheeet extends Component {
           </tbody>
         </table>
 
-        <div>
-          <label>Upload Timesheet: </label>
-          <input type="file"></input>
-        </div>
-        <button type="submit" onClick={this.handleSubmit}>
-          Save
-        </button>
-      </div>
+        <div style={{ marginTop: '1%', paddingLeft: '20%', paddingRight: '15%' }}>
+          <span style={{ float: 'left' }}>
+            <label style={{ paddingRight: '5px' }}>Upload Timesheet: </label>
+            <input name='files' type="file"></input>
+          </span>
+          <span style={{ float: 'right' }}>
+            <button style={{ padding: '5px 15px', backgroundColor: 'lightgreen' }} type="submit" onClick={this.handleSubmit}>Save</button>
+          </span>
+        </div >
+
+      </div >
     );
   }
 }

@@ -21,5 +21,5 @@ public interface TimesheetClient {
 
     @PostMapping("/updateTimesheet")
     Boolean updateTimesheet(
-            @RequestParam(value = "obj") List timesheetDetailMap);
+            @RequestParam(value = "obj") List<Object> timesheetDetailMap);
 }

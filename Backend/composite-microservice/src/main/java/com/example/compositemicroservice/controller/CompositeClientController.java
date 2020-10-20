@@ -56,7 +56,7 @@ public class CompositeClientController {
     }
 
     @PostMapping("/updateTimesheet")
-    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List timesheetDetailMap,
+    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List<Object> timesheetDetailMap,
                                                    @RequestParam(value = "email") String email) throws IOException {
 
         System.out.println(email);

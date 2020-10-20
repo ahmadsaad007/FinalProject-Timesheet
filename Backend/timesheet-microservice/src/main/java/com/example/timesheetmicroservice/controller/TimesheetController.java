@@ -33,7 +33,7 @@ public class TimesheetController {
     }
 
     @PostMapping("/updateTimesheet")
-    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List timesheetDetailMap) throws IOException {
+    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List<Object> timesheetDetailMap) throws IOException {
        //System.out.println(timesheetDetailMap.toString());
 
        return timesheetService.updateTimesheet(timesheetDetailMap);

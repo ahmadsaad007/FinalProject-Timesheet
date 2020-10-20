@@ -23,7 +23,7 @@ public class Timesheet {
     private String submissionStatus;
     private String approveStatus;
     private String comment;
-    private List<String> files;
+    private String files;
     private boolean defaultTimesheet;
 
     public String getId() {
@@ -94,11 +94,11 @@ public class Timesheet {
         this.comment = comment;
     }
 
-    public List<String> getFiles() {
+    public String getFiles() {
         return files;
     }
 
-    public void setFiles(List<String> files) {
+    public void setFiles(String files) {
         this.files = files;
     }
 
