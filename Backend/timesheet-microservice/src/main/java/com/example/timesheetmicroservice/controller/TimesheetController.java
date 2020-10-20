@@ -33,20 +33,14 @@ public class TimesheetController {
     }
 
     @PostMapping("/updateTimesheet")
-    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "endDate") String endDate,
-                                                   @RequestParam(value = "eid") String eid,
-                                                   @RequestParam(value = "file") String file,
-                                                   @RequestParam(value = "defaultTimesheet") boolean defaultTimesheet,
-                                                   @RequestParam(value = "obj") Object timesheetDetailMap) throws IOException {
+    public ResponseEntity<Boolean> updateTimesheet(@RequestParam(value = "obj") List timesheetDetailMap) throws IOException {
+       //System.out.println(timesheetDetailMap.toString());
 
-        System.out.println("fetch sth!");
-        System.out.println(eid);
-        System.out.println(file.toString());
+       return timesheetService.updateTimesheet(timesheetDetailMap);
         // json object convertor
-        Map<String, TimeSheetDetail> timeSheetDetail = new ObjectMapper().readValue((JsonParser) timesheetDetailMap, new TypeReference<Map<String, TimeSheetDetail>>() {});
+        //Map<String, TimeSheetDetail> timeSheetDetail = new ObjectMapper().readValue((JsonParser) timesheetDetailMap, new TypeReference<Map<String, TimeSheetDetail>>() {});
 
-//        Map<String, Object> timeSheetDetail = new Gson().fromJson(yourJsonObject.toString(), Map.class);
-        return timesheetService.updateTimesheet(endDate,eid,file,defaultTimesheet,timeSheetDetail);
+        //return timesheetService.updateTimesheet(endDate,eid,file,defaultTimesheet,timeSheetDetail);
 
     }
 }

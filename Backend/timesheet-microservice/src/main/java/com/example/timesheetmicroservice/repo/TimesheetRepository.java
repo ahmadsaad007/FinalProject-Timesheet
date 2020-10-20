@@ -12,8 +12,10 @@ import java.util.List;
 public interface TimesheetRepository extends MongoRepository<Timesheet,String> {
 
     List<Timesheet> findAllByEid(String eid);
+
     Timesheet findByEndDateAndEid(String endDate, String eid);
 
+    Timesheet findByIdAndEid(String id,String  eid);
     // find timesheet for a limited result by eid
     // https://www.baeldung.com/spring-data-jpa-pagination-sorting
 //    List<Timesheet> findAllByEid(String eid, Pageable pageable);
