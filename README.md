@@ -27,6 +27,11 @@
   ### Frontend
     The frontend is a simple react application. Just npm start it!
 
+  ### Features
+    The app can currently only display the timesheets and let you edit existing timesheets. 
+    Needs more functionality to automatically add timesheets to the db after every week and let user modify it
+    Also needs a login functionality as it currently only supports a hardcoded employee email for login
+    Would like to implement JWT Authentication in the future.
 
   ## Major Contributors: 
 
