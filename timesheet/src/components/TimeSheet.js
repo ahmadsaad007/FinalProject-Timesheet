@@ -92,7 +92,7 @@ class TimeSheeet extends Component {
 
   componentDidMount() {
     var time = this.props.match.params.time+"";
-    if (time.length == 0){
+    if (time.length === 0){
        time = this.endDate;
     }
   
@@ -257,7 +257,7 @@ class TimeSheeet extends Component {
 
         //console.log(this.state);
       });
-
+    }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -346,7 +346,7 @@ class TimeSheeet extends Component {
       this.state.vacation7
     ];
 
-    axios.post('http://localhost:8802/updateTimesheet?obj=' + obj + '&email=' + this.email).then(res => {
+    axios.post('http://localhost:8080/updateTimesheet?obj=' + obj + '&email=' + this.email).then(res => {
       console.log(res);
       console.log(res.data);
       alert("Timesheet Successfully Updated")
